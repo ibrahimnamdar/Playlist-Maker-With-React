@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
+import { Layout } from './layouts/Layout';
 import { Home } from './components/Home';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
@@ -7,7 +8,7 @@ import Button from './components/Button';
 import ButtonAppBar from './components/ButtonAppBar';
 import EnhancedTableHead  from './components/EnhancedTable';
 import EnhancedTable  from './components/EnhancedTable';
-import Layout  from './layouts/Layout';
+import LoginForm  from './components/LoginForm';
 
 export default class App extends Component {
   displayName = App.name
@@ -36,6 +37,7 @@ export default class App extends Component {
 
   render() {
     return (
+       
       <div>
       <Layout/>
       </div>
