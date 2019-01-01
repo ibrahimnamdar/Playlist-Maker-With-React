@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PlaylistMaker.Core;
+using PlaylistMaker.Core.Models;
+using PlaylistMaker.Persistence;
 
 namespace PlaylistMaker
 {
@@ -21,6 +24,10 @@ namespace PlaylistMaker
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.AddScoped<ISpotifyRepository, SpotifyRepository>();
+            services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
