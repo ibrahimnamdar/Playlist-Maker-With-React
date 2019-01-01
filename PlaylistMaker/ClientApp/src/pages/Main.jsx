@@ -10,12 +10,13 @@ export default class Login extends Component {
   
 
   constructor(props) {
+    const params = new URLSearchParams(props.location.search);
+    const code = params.get('code'); 
     super(props);
     this.state = {
       error: null,
       isLoaded: false,
-      url: "sa",
-      homeLink:"login"
+      code:code
     };
     const styles = {
       root: {
@@ -30,13 +31,13 @@ window.location.href=url;
 }
 
   componentDidMount() {
-    fetch("api/SampleData/Login")
+    fetch("api/SampleData/GetUser?code="+this.state.code)
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            url: result
+            
           });
           window.location.href=result;
         },

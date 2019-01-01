@@ -8,10 +8,18 @@ import ButtonAppBar from './components/ButtonAppBar';
 import EnhancedTableHead  from './components/EnhancedTable';
 import EnhancedTable  from './components/EnhancedTable';
 import Layout  from './layouts/Layout';
+import Login  from './pages/Login';
+import Main  from './pages/Main';
 
 export default class App extends Component {
   displayName = App.name
-
+  constructor(props) {
+    super(props);
+    this.state = {
+     
+      homeLink:"login"
+    };
+  }
   componentDidMount() {
     fetch("api/SampleData/Login")
       .then(res => res.json())
@@ -37,7 +45,11 @@ export default class App extends Component {
   render() {
     return (
       <div>
-      <Layout/>
+      <Layout homeLink={this.state.homeLink}/>
+      <main>
+      <Route path="/login" component={Login} />
+      <Route path="/user" component={Main} />
+      </main>
       </div>
     );
   }
