@@ -13,13 +13,13 @@ namespace PlaylistMaker.Controllers
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
-        private readonly IAuthenticationRepository repositoryAuth;
-        private readonly ISpotifyRepository repositorySpotify;
+        private readonly IAuthenticationRepository _repositoryAuth;
+        private readonly ISpotifyRepository _repositorySpotify;
 
         public SampleDataController(IAuthenticationRepository repositoryAuth, ISpotifyRepository repositorySpotify)
         {
-            this.repositoryAuth = repositoryAuth;
-            this.repositorySpotify = repositorySpotify;
+            _repositoryAuth = repositoryAuth;
+            _repositorySpotify = repositorySpotify;
         }
         
         [HttpGet("[action]")]
@@ -27,10 +27,10 @@ namespace PlaylistMaker.Controllers
         {
             if (code!="undefined")
             {
-                var token = await repositoryAuth.GetToken(code);
-                User user = await repositoryAuth.GetUser(token);
+                var token = await _repositoryAuth.GetToken(code);
+                User user = await _repositoryAuth.GetUser(token);
             }
-            var response =await repositoryAuth.Redirect();
+            var response =await _repositoryAuth.Redirect();
             return Json(response);
         }
 
@@ -40,8 +40,8 @@ namespace PlaylistMaker.Controllers
             User user = null;
             if (code != "undefined")
             {
-                var token = await repositoryAuth.GetToken(code);
-                user = await repositoryAuth.GetUser(token);
+                var token = await _repositoryAuth.GetToken(code);
+                user = await _repositoryAuth.GetUser(token);
             }
             return Json(user);
         }
