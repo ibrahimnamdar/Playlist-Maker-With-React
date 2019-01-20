@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Button from '../components/Button';
+import Sidebar from '../components/Sidebar';
 
 
 export default class Login extends Component {
@@ -39,7 +40,6 @@ window.location.href=url;
             isLoaded: true,
             
           });
-          window.location.href=result;
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -56,6 +56,7 @@ window.location.href=url;
   render() {
     return (
       <div>
+        <Sidebar></Sidebar>
       <Typography style={{width: '100%', maxWidth: '500', textAlign: 'center', padding: "5%"}} component="h2" variant="h1" gutterBottom>
         Welcome to Playlist Maker
       </Typography>

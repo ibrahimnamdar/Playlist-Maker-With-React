@@ -26,8 +26,8 @@ namespace PlaylistMaker
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
-            services.AddScoped<ISpotifyRepository, SpotifyRepository>();
-            services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
+            services.AddTransient<ISpotifyRepository, SpotifyRepository>();
+            services.AddTransient<IAuthenticationRepository, AuthenticationRepository>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

@@ -24,7 +24,7 @@ namespace PlaylistMaker.Persistence
         }
         public async Task<string> Redirect()
         {
-            var redirectUrl = $"{AppSettings.AccountBaseUrl}/authorize?client_id={AppSettings.ClientId}&redirect_uri=https://localhost:44345/user&response_type=code&scope=user-read-private user-read-email";
+            var redirectUrl = $"{AppSettings.AccountBaseUrl}/authorize?client_id={AppSettings.ClientId}&redirect_uri=https://localhost:44320/user&response_type=code&scope=user-read-private user-read-email";
             
             return redirectUrl;
         }
@@ -35,7 +35,7 @@ namespace PlaylistMaker.Persistence
             var base64 = SpotifyHelper.Base64Encode($"{AppSettings.ClientId}:{AppSettings.ClientSecret}");
 
             request.AddParameter("code", code);
-            request.AddParameter("redirect_uri", "https://localhost:44345/user");
+            request.AddParameter("redirect_uri", "https://localhost:44320/user");
             request.AddParameter("grant_type", "authorization_code");
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
             request.AddHeader("Authorization", $"Basic {base64}");
