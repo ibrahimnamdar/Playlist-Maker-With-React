@@ -1,38 +1,38 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Button from '@material-ui/core/Button';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import Button from "@material-ui/core/Button";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import Switch from "@material-ui/core/Switch";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormGroup from "@material-ui/core/FormGroup";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const styles = {
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   grow: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20,
-  },
+    marginRight: 20
+  }
 };
 
 class MenuAppBar extends React.Component {
   state = {
     auth: false,
     anchorEl: null,
-    homeLink : "dfdgf"
+    homeLink: "dfdgf"
   };
 
   handleChange = event => {
@@ -43,13 +43,13 @@ class MenuAppBar extends React.Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-onChangeLink(){
-this.props.changeLink(this.state.homeLink);
-};
+  onChangeLink() {
+    this.props.changeLink(this.state.homeLink);
+  }
 
-handleRedirect(url){
-  window.location.href=url;
-}
+  handleRedirect(url) {
+    window.location.href = url;
+  }
 
   handleClose = () => {
     this.setState({ anchorEl: null });
@@ -64,16 +64,22 @@ handleRedirect(url){
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+            <IconButton
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="Menu"
+            >
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" className={classes.grow}>
-            <Link to="/" style={{ textDecoration: 'none', color:'white' }}>Home</Link>
+              <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+                Home
+              </Link>
             </Typography>
             {auth && (
               <div>
                 <IconButton
-                  aria-owns={open ? 'menu-appbar' : undefined}
+                  aria-owns={open ? "menu-appbar" : undefined}
                   aria-haspopup="true"
                   onClick={this.handleMenu}
                   color="inherit"
@@ -84,12 +90,12 @@ handleRedirect(url){
                   id="menu-appbar"
                   anchorEl={anchorEl}
                   anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
+                    vertical: "top",
+                    horizontal: "right"
                   }}
                   transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
+                    vertical: "top",
+                    horizontal: "right"
                   }}
                   open={open}
                   onClose={this.handleClose}
@@ -101,8 +107,17 @@ handleRedirect(url){
             )}
 
             {!auth && (
-              <Typography variant="h6" color="inherit" className={classes.menuButton}>
-              <Link to={this.props.homeLink} style={{ textDecoration: 'none', color:'white' }}  >Login</Link>
+              <Typography
+                variant="h6"
+                color="inherit"
+                className={classes.menuButton}
+              >
+                <Link
+                  to={this.props.homeLink}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Login
+                </Link>
               </Typography>
             )}
           </Toolbar>
@@ -113,7 +128,7 @@ handleRedirect(url){
 }
 
 MenuAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(MenuAppBar);

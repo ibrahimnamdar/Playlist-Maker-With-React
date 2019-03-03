@@ -26,6 +26,8 @@ const styles = theme => ({
 });
 
 class NestedList extends React.Component {
+
+  
   state = { open: true };
 
   handleClick = () => {
@@ -37,44 +39,15 @@ class NestedList extends React.Component {
 
     return (
       <div className={classes.root}>
-        <List
-          component="nav"
-          subheader={<ListSubheader component="div">Nested List Items</ListSubheader>}
-        >
-          <ListItem button>
-            <ListItemIcon>
-              <SendIcon />
-            </ListItemIcon>
-            <ListItemText inset primary="Sent mail" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <DraftsIcon />
-            </ListItemIcon>
-            <ListItemText inset primary="Drafts" />
-          </ListItem>
-          <ListItem button onClick={this.handleClick}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText inset primary="Inbox" />
-            {this.state.open ? <ExpandLess /> : <ExpandMore />}
-          </ListItem>
-          <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button className={classes.nested}>
-                <ListItemIcon>
-                  <StarBorder />
-                </ListItemIcon>
-                <ListItemText inset primary="Starred" />
-              </ListItem>
-            </List>
-          </Collapse>
-        </List>
+        <h1>{this.props.user.display_name}</h1>
       </div>
     );
   }
 }
+
+NestedList.defaultProps = {
+  user:'',
+};
 
 NestedList.propTypes = {
   classes: PropTypes.object.isRequired,
